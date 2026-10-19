@@ -1,58 +1,39 @@
-import math
 import pygame
-from OpenGL.GL import *
-from OpenGL.GLU import *
+import pygame3d
+import sys
 
-sides = int(input("How many sides? "))
+# Initialize the pygame library
+pygame.init()
 
-vertices = []
+screen = pygame.display.set_mode((800, 600))
+clock = pygame.time.Clock()
 
-# Create top and bottom polygons
-for z in [1, -1]:
-    for i in range(sides):
-        angle = 2 * math.pi * i / sides
-        vertices.append((
-            math.cos(angle),
-            math.sin(angle),
-            z
-        ))
+# Create a 3D surface
+surface = pygame3d.Surface3D((800, 600))
 
-edges = []
+# Configure background color
+surface.background_color = (145, 216, 255) # Sky blue
 
-for i in range(sides):
-    next_i = (i + 1) % sides
+# Loading a model
+model = surface.load_mesh('Assests/Testing/ducky.glb')
+model.position = (0, 20, -2)
+# Add a light
+light = surface.add_light('point')
+light.position = (20, 20, 20)
 
-    # Top and bottom edges
-    edges.append((i, next_i))
-    edges.append((i + sides, next_i + sides))
+light2 = surface.add_light('ambient')
+light2.color = (50, 50, 50)
 
-    # Vertical edges
-    edges.append((i, i + sides))
+# Main game loop
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            sys.exit()
 
-def drawobject():
-    glBegin(GL_LINES)
-    for edge in edges:
-        for vertex in edge:
-            glVertex3fv(vertices[vertex])
-    glEnd()
+    model.rotation += (1, 0, 0) # Rotate the model
+    surface.render() # Render the surface to display the newest updates
+    screen.blit(surface, (0, 0))
 
-def main():
-    pygame.init()
-    display = (800, 600)
-    pygame.display.set_mode(display, pygame.DOUBLEBUF | pygame.OPENGL)
-    gluPerspective(45, (display[0] / display[1]), 0.1, 50.0)
-    glTranslatef(0.0, 0.0, -5)
-
-    while True:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                return
-
-        glRotatef(1, 0, 1, 0)
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
-        drawobject()
-        pygame.display.flip()
-        pygame.time.wait(10)
-
-main()
+    pygame.display.update()
+    clock.tick(60) # 60 FPS
