@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="005f01e9-0f4f-43d6-8194-3e02c2f9deb2" name="Changes" comment="Added in the ability to change the shape dynamically based on the number of sides.">
+    <list default="true" id="005f01e9-0f4f-43d6-8194-3e02c2f9deb2" name="Changes" comment="Quick switch from building a rendering from scratch now I am using pygame3d   Fr5ctal">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/render.py" beforeDir="false" afterPath="$PROJECT_DIR$/render.py" afterDir="false" />
     </list>
@@ -102,7 +102,7 @@
       <workItem from="1792438651715" duration="254000" />
       <workItem from="1792438923729" duration="1000" />
       <workItem from="1792439008664" duration="1849000" />
-      <workItem from="1792445947824" duration="748000" />
+      <workItem from="1792445947824" duration="2311000" />
     </task>
     <task id="LOCAL-00001" summary="Made a gameplan">
       <option name="closed" value="true" />
@@ -144,7 +144,15 @@
       <option name="project" value="LOCAL" />
       <updated>1792440077741</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Quick switch from building a rendering from scratch now I am using pygame3d   Fr5ctal">
+      <option name="closed" value="true" />
+      <created>1792446722311</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1792446722311</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -156,9 +164,10 @@
     <MESSAGE value="Made physics.py" />
     <MESSAGE value="Made a simple cube in render.py. Next I am going to dd a custom shape so i cam make triangles and other shapes." />
     <MESSAGE value="Added in the ability to change the shape dynamically based on the number of sides." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added in the ability to change the shape dynamically based on the number of sides." />
+    <MESSAGE value="Quick switch from building a rendering from scratch now I am using pygame3d   Fr5ctal" />
+    <option name="LAST_COMMIT_MESSAGE" value="Quick switch from building a rendering from scratch now I am using pygame3d   Fr5ctal" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Nailed$render.coverage" NAME="render Coverage Results" MODIFIED="1792446645443" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Nailed$render.coverage" NAME="render Coverage Results" MODIFIED="1792448701922" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
