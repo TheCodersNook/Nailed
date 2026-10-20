@@ -1,82 +1,220 @@
+
 import pygame
-import pygame3d
-from physics import Physics
-import sys
-import math
-from panda3d.core import CardMaker
+from pygame3d import Surface3D
+from panda3d.core import (
+    CardMaker,
+    PointLight,
+    AmbientLight,
+    Vec4,
+)
 
-# Initialize the pygame library
-pygame.init()
+from camera import Camera
 
-screen = pygame.display.set_mode((800, 600))
-clock = pygame.time.Clock()
 
-# Create a 3D surface
-surface = pygame3d.Surface3D((800, 600))
+class GameObject:
+    """A manageable 3D object in the scene."""
 
-# Configure background color
-surface.background_color = (145, 216, 255) # Sky blue
+    def __init__(
+        self,
+        model,
+        position=(0, 0, 0),
+        rotation=(0, 0, 0),
+        scale=1.0,
+        physics=None,
+    ):
+        self.model = model
+        self.physics = physics
 
-# Loading a model
-model = surface.load_mesh('Assests/Testing/ducky.glb')
-physics = Physics(groundz=-3)
-model.position = (0, 20, 10)
-# Ground
-ground = CardMaker("ground")
-ground.setFrame(-50, 50, -50, 50)
+        self.position = position
+        self.rotation = rotation
+        self.scale = scale
 
-ground_node = surface._root_node.attachNewNode(ground.generate())
-ground_node.setP(90)
-ground_node.setPos(0, 0, -3)
-ground_node.setColor(1, 1, 1, 1)
-ground_node.setTwoSided(True)
-# Add a light
-light = surface.add_light('point')
-light.position = (20, 20, 20)
+    @property
+    def position(self):
+        return self.model.position
 
-light2 = surface.add_light('ambient')
-light2.color = (50, 50, 50)
-#Mouse
-camera = surface.camera
-camera_core = camera.core
-target = (0, 20, -2)
-distance = 27
-yaw = 0
-pitch = 0
-dragging = False
-sensitivity = 0.7
-#Update Camera
-def update_camera():
-    yaw_rad = math.radians(yaw)
-    pitch_rad = math.radians(pitch)
+    @position.setter
+    def position(self, value):
+        self.model.position = value
 
-    x = target[0] + distance * math.cos(pitch_rad) * math.sin(yaw_rad)
-    y = target[1] + distance * math.sin(pitch_rad)
-    z = target[2] + distance * math.cos(pitch_rad) * math.cos(yaw_rad)
+    @property
+    def rotation(self):
+        return self.model.rotation
 
-    camera_core.setPos(x, y, z)
-    camera_core.lookAt(*target)
-# Main game loop
-update_camera()
+    @rotation.setter
+    def rotation(self, value):
+        self.model.rotation = value
 
-while True:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            dragging = True
-        if event.type == pygame.MOUSEBUTTONUP:
-            dragging = False
-        if event.type == pygame.MOUSEMOTION and dragging:
-            dx, dy = event.rel
-            yaw -= dx * sensitivity
-            pitch = max(-80, min(80, pitch + dy * sensitivity))
-            update_camera()
-    #model.rotation += (1, 0, 0) # Rotate the model
-    dt = clock.tick(60) / 1000.0
-    physics.update(model, dt)
-    surface.render() # Render the surface to display the newest updates
-    screen.blit(surface, (0, 0))
-    pygame.display.update()
-    clock.tick(60) # 60 FPS
+    @property
+    def scale(self):
+        return self.model.scale
+
+    @scale.setter
+    def scale(self, value):
+        self.model.scale = value
+
+    def set_position(self, position):
+        self.position = position
+
+    def set_rotation(self, rotation):
+        self.rotation = rotation
+
+    def set_scale(self, scale):
+        self.scale = scale
+
+    def update(self, dt):
+        if self.physics:
+            self.physics.update(self, dt)
+
+
+class Scene:
+    """Stores and manages objects, the floor, and lighting."""
+
+    def __init__(self, surface):
+        self.surface = surface
+        self.root = surface._root_node
+
+        self.objects = []
+        self.environments = []
+
+    def add_object(
+        self,
+        path,
+        position=(0, 0, 0),
+        rotation=(0, 0, 0),
+        scale=1.0,
+        physics=None,
+    ):
+        """Load a 3D model and add it to the scene."""
+
+        model = self.surface.load_mesh(path)
+
+        obj = GameObject(
+            model=model,
+            position=position,
+            rotation=rotation,
+            scale=scale,
+            physics=physics,
+        )
+
+        self.objects.append(obj)
+        return obj
+
+    def remove_object(self, obj):
+        """Remove an object from the scene."""
+
+        if obj in self.objects:
+            self.objects.remove(obj)
+
+            # Remove the underlying Panda3D node if available.
+            core = getattr(obj.model, "core", None)
+            if core is not None and hasattr(core, "removeNode"):
+                core.removeNode()
+
+    def add_floor(
+        self,
+        position=(0, 0, -3),
+        size=50,
+        color=(0.35, 0.35, 0.35, 1),
+    ):
+        """Create a large horizontal floor."""
+
+        floor_maker = CardMaker("floor")
+        floor_maker.setFrame(-size, size, -size, size)
+
+        floor = self.root.attachNewNode(
+            floor_maker.generate()
+        )
+
+        # CardMaker creates an XY plane.
+        floor.setPos(*position)
+        floor.setColor(*color)
+        floor.setTwoSided(True)
+
+        self.environments.append(floor)
+        return floor
+
+    def add_lighting(self):
+        """Add ambient and point lighting."""
+
+        point_light = PointLight("point_light")
+        point_light.setColor(Vec4(1, 1, 1, 1))
+
+        point_node = self.root.attachNewNode(point_light)
+        point_node.setPos(5, -5, 10)
+        self.root.setLight(point_node)
+
+        ambient_light = AmbientLight("ambient_light")
+        ambient_light.setColor(Vec4(0.4, 0.4, 0.4, 1))
+
+        ambient_node = self.root.attachNewNode(ambient_light)
+        self.root.setLight(ambient_node)
+
+        self.environments.extend(
+            [point_node, ambient_node]
+        )
+
+    def remove_environment(self, item):
+        """Remove a floor or lighting node."""
+
+        if item in self.environments:
+            self.environments.remove(item)
+            item.removeNode()
+
+    def update(self, dt):
+        """Update every object in the scene."""
+
+        for obj in self.objects:
+            obj.update(dt)
+
+
+class Renderer:
+    """Initializes the window, camera, and game loop."""
+
+    def __init__(self, width=800, height=600):
+        pygame.init()
+
+        self.width = width
+        self.height = height
+
+        self.screen = pygame.display.set_mode(
+            (width, height)
+        )
+        pygame.display.set_caption("Nailed")
+
+        self.surface = Surface3D((width, height))
+        self.surface.fill((135, 206, 235))
+
+        self.clock = pygame.time.Clock()
+        self.running = False
+
+        self.scene = Scene(self.surface)
+
+        self.camera = Camera(
+            self.surface,
+            position=(0, 0, 2),
+        )
+
+    def run(self):
+        """Run the main game loop."""
+
+        self.running = True
+
+        while self.running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    self.running = False
+                else:
+                    self.camera.handle_event(event)
+
+            dt = self.clock.tick(60) / 1000.0
+
+            self.camera.move(dt)
+            self.scene.update(dt)
+
+            self.surface.render()
+
+            self.screen.blit(self.surface, (0, 0))
+            pygame.display.flip()
+
+        pygame.quit()

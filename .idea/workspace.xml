@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="005f01e9-0f4f-43d6-8194-3e02c2f9deb2" name="Changes" comment="Got the rendering to work and made it work so I can turn it by dragging the mouse.">
+    <list default="true" id="005f01e9-0f4f-43d6-8194-3e02c2f9deb2" name="Changes" comment="Fixed the mouse controlling the camera angle, add in working pyshic so the duck falls onto a grey ground.">
+      <change afterPath="$PROJECT_DIR$/camera.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/physics.py" beforeDir="false" afterPath="$PROJECT_DIR$/physics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/render.py" beforeDir="false" afterPath="$PROJECT_DIR$/render.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,6 +52,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.Main.executor": "Run",
+    "Python.camera.executor": "Run",
     "Python.physics.executor": "Run",
     "Python.render.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -104,7 +107,8 @@
       <workItem from="1792438651715" duration="254000" />
       <workItem from="1792438923729" duration="1000" />
       <workItem from="1792439008664" duration="1849000" />
-      <workItem from="1792445947824" duration="4811000" />
+      <workItem from="1792445947824" duration="5255000" />
+      <workItem from="1792522090217" duration="3630000" />
     </task>
     <task id="LOCAL-00001" summary="Made a gameplan">
       <option name="closed" value="true" />
@@ -162,7 +166,15 @@
       <option name="project" value="LOCAL" />
       <updated>1792448797552</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Fixed the mouse controlling the camera angle, add in working pyshic so the duck falls onto a grey ground.">
+      <option name="closed" value="true" />
+      <created>1792457365545</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1792457365545</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -176,10 +188,13 @@
     <MESSAGE value="Added in the ability to change the shape dynamically based on the number of sides." />
     <MESSAGE value="Quick switch from building a rendering from scratch now I am using pygame3d   Fr5ctal" />
     <MESSAGE value="Got the rendering to work and made it work so I can turn it by dragging the mouse." />
-    <option name="LAST_COMMIT_MESSAGE" value="Got the rendering to work and made it work so I can turn it by dragging the mouse." />
+    <MESSAGE value="Fixed the mouse controlling the camera angle, add in working pyshic so the duck falls onto a grey ground." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed the mouse controlling the camera angle, add in working pyshic so the duck falls onto a grey ground." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Nailed$physics.coverage" NAME="physics Coverage Results" MODIFIED="1792457199999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Nailed$render.coverage" NAME="render Coverage Results" MODIFIED="1792457286011" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Nailed$camera.coverage" NAME="camera Coverage Results" MODIFIED="1792523108221" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Nailed$Main.coverage" NAME="Main Coverage Results" MODIFIED="1792525737184" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Nailed$render.coverage" NAME="render Coverage Results" MODIFIED="1792525661787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
