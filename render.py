@@ -1,7 +1,9 @@
 import pygame
 import pygame3d
+from physics import Physics
 import sys
 import math
+from panda3d.core import CardMaker
 
 # Initialize the pygame library
 pygame.init()
@@ -17,7 +19,17 @@ surface.background_color = (145, 216, 255) # Sky blue
 
 # Loading a model
 model = surface.load_mesh('Assests/Testing/ducky.glb')
-model.position = (0, 20, -2)
+physics = Physics(groundz=-3)
+model.position = (0, 20, 10)
+# Ground
+ground = CardMaker("ground")
+ground.setFrame(-50, 50, -50, 50)
+
+ground_node = surface._root_node.attachNewNode(ground.generate())
+ground_node.setP(90)
+ground_node.setPos(0, 0, -3)
+ground_node.setColor(1, 1, 1, 1)
+ground_node.setTwoSided(True)
 # Add a light
 light = surface.add_light('point')
 light.position = (20, 20, 20)
@@ -28,7 +40,7 @@ light2.color = (50, 50, 50)
 camera = surface.camera
 camera_core = camera.core
 target = (0, 20, -2)
-distance = 15
+distance = 27
 yaw = 0
 pitch = 0
 dragging = False
@@ -45,6 +57,8 @@ def update_camera():
     camera_core.setPos(x, y, z)
     camera_core.lookAt(*target)
 # Main game loop
+update_camera()
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -56,12 +70,13 @@ while True:
             dragging = False
         if event.type == pygame.MOUSEMOTION and dragging:
             dx, dy = event.rel
-            yaw += dx * sensitivity
+            yaw -= dx * sensitivity
             pitch = max(-80, min(80, pitch + dy * sensitivity))
             update_camera()
     #model.rotation += (1, 0, 0) # Rotate the model
+    dt = clock.tick(60) / 1000.0
+    physics.update(model, dt)
     surface.render() # Render the surface to display the newest updates
     screen.blit(surface, (0, 0))
-
     pygame.display.update()
     clock.tick(60) # 60 FPS
