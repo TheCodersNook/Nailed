@@ -4,7 +4,7 @@ import pygame
 
 
 class Camera:
-    def __init__(self, surface, position=(0, 0, 2), sensitivity=0.15):
+    def __init__(self, surface, position=(0, -5, 2), sensitivity=0.15):
         self.core = surface.camera.core
         self.position = list(position)
 
@@ -42,7 +42,7 @@ class Camera:
         elif event.type == pygame.MOUSEMOTION and self.mouse_captured:
             dx, dy = event.rel
 
-            self.yaw -= dx * self.sensitivity
+            self.yaw += dx * self.sensitivity
             self.pitch -= dy * self.sensitivity
             self.pitch = max(-89, min(89, self.pitch))
 
