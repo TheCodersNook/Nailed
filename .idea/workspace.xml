@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="005f01e9-0f4f-43d6-8194-3e02c2f9deb2" name="Changes" comment="Fixed the mouse mechanics for changing the camera's viewing angle.">
-      <change afterPath="$PROJECT_DIR$/world.py" afterDir="false" />
+    <list default="true" id="005f01e9-0f4f-43d6-8194-3e02c2f9deb2" name="Changes" comment="Made a simple world generation script(world.py).">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -109,7 +108,7 @@
       <workItem from="1792445947824" duration="5255000" />
       <workItem from="1792522090217" duration="3718000" />
       <workItem from="1792546629608" duration="871000" />
-      <workItem from="1792545412480" duration="2564000" />
+      <workItem from="1792545412480" duration="3903000" />
     </task>
     <task id="LOCAL-00001" summary="Made a gameplan">
       <option name="closed" value="true" />
@@ -191,7 +190,15 @@
       <option name="project" value="LOCAL" />
       <updated>1792546873655</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Made a simple world generation script(world.py).">
+      <option name="closed" value="true" />
+      <created>1792704568094</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1792704568094</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,7 +215,8 @@
     <MESSAGE value="Fixed the mouse controlling the camera angle, add in working pyshic so the duck falls onto a grey ground." />
     <MESSAGE value="Make everything OOP and made a working demo with the newly added camera and fps system so u can move with wasd and look around like normal wih your mouse ina normal fps game." />
     <MESSAGE value="Fixed the mouse mechanics for changing the camera's viewing angle." />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed the mouse mechanics for changing the camera's viewing angle." />
+    <MESSAGE value="Made a simple world generation script(world.py)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made a simple world generation script(world.py)." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Nailed$physics.coverage" NAME="physics Coverage Results" MODIFIED="1792457199999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
