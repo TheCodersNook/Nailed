@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="005f01e9-0f4f-43d6-8194-3e02c2f9deb2" name="Changes" comment="Made all of the 3d models">
-      <change afterPath="$PROJECT_DIR$/tile.py" afterDir="false" />
+    <list default="true" id="005f01e9-0f4f-43d6-8194-3e02c2f9deb2" name="Changes" comment="Made tile.py and updated world.py to make it all work together to make working world generation. Although I need to change the algorithm to be natural and refined when I get some time.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tile.py" beforeDir="false" afterPath="$PROJECT_DIR$/tile.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/world.py" beforeDir="false" afterPath="$PROJECT_DIR$/world.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -115,7 +114,7 @@
       <workItem from="1792545412480" duration="3903000" />
       <workItem from="1793310667220" duration="3600000" />
       <workItem from="1793653764891" duration="2160000" />
-      <workItem from="1793669058063" duration="1878000" />
+      <workItem from="1793669058063" duration="4748000" />
     </task>
     <task id="LOCAL-00001" summary="Made a gameplan">
       <option name="closed" value="true" />
@@ -213,7 +212,15 @@
       <option name="project" value="LOCAL" />
       <updated>1793310691957</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Made tile.py and updated world.py to make it all work together to make working world generation. Although I need to change the algorithm to be natural and refined when I get some time.">
+      <option name="closed" value="true" />
+      <created>1793671130838</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1793671130838</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,14 +239,26 @@
     <MESSAGE value="Fixed the mouse mechanics for changing the camera's viewing angle." />
     <MESSAGE value="Made a simple world generation script(world.py)." />
     <MESSAGE value="Made all of the 3d models" />
-    <option name="LAST_COMMIT_MESSAGE" value="Made all of the 3d models" />
+    <MESSAGE value="Made tile.py and updated world.py to make it all work together to make working world generation. Although I need to change the algorithm to be natural and refined when I get some time." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made tile.py and updated world.py to make it all work together to make working world generation. Although I need to change the algorithm to be natural and refined when I get some time." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Main.py</url>
+          <line>4</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Nailed$physics.coverage" NAME="physics Coverage Results" MODIFIED="1792457199999" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Nailed$tiles.coverage" NAME="tiles Coverage Results" MODIFIED="1793670751418" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Nailed$camera.coverage" NAME="camera Coverage Results" MODIFIED="1792546713827" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Nailed$Main.coverage" NAME="Main Coverage Results" MODIFIED="1793670842593" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Nailed$world.coverage" NAME="world Coverage Results" MODIFIED="1793654579030" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Nailed$Main.coverage" NAME="Main Coverage Results" MODIFIED="1793729913925" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Nailed$world.coverage" NAME="world Coverage Results" MODIFIED="1793729625507" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Nailed$render.coverage" NAME="render Coverage Results" MODIFIED="1792525661787" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

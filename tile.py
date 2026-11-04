@@ -7,7 +7,7 @@ import os
 import world as world_module
 
 ASSEST = Path(__file__).resolve().parent / "Assests"
-tilesize = 1.0
+tilesize = 4.0
 chunksize = 16
 viewdistance = 3
 
@@ -245,6 +245,7 @@ class TileWorld:
             x,
             y,
             heading=heading,
+            scale=tilesize,
         )
 
         props = PROP_TILES.get(char)
@@ -259,7 +260,7 @@ class TileWorld:
 
         path = rng.choice(props)
         heading = rng.choice((0, 90, 180, 270))
-        scale = rng.uniform(0.85, 1.15)
+        scale = tilesize * rng.uniform(0.85, 1.15)
 
         offset_x = rng.uniform(-0.18, 0.18) * tilesize
         offset_y = rng.uniform(-0.18, 0.18) * tilesize
