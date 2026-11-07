@@ -1,19 +1,13 @@
 
 class Physics:
-    def __init__(self, gravity=-9.81, groundz=-3):
+    def __init__(self, gravity=-20.0, terminalvelocity=-50.0):
         self.gravity = gravity
-        self.groundz = groundz
+        self.terminalvelocity =  terminalvelocity
         self.velocity = 0.0
 
     def update(self, model, dt):
         x, y, z = model.position
-
-        if z > self.groundz:
-            self.velocity += self.gravity * dt
-            z += self.velocity * dt
-
-        if z <= self.groundz:
-            z = self.groundz
-            self.velocity = 0.0
-
-        model.position = (x, y, z)
+        self.velocity += self.gravity * dt
+        self.velocity = max(self.velocity, self.terminalvelocity)
+        z += self.velocity * dt
+        model.position[2] = z
